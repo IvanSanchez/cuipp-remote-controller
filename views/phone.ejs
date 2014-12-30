@@ -1,0 +1,91 @@
+<html>
+<head><title><%= phone %> - cuipp-remote-controller</title>
+
+<link rel='stylesheet' href='/css/keyboard.css' />
+<body>
+
+
+<img id='phoneScreen' src='<%= imageUrl %>'>
+
+<div id='keyboard'>
+
+<a target='void' href='/push/<%= phone %>/KeyPad0' id='btn-0'>0</a>
+<a target='void' href='/push/<%= phone %>/KeyPad1' id='btn-1'>1</a>
+<a target='void' href='/push/<%= phone %>/KeyPad2' id='btn-2'>2</a>
+<a target='void' href='/push/<%= phone %>/KeyPad3' id='btn-3'>3</a>
+<a target='void' href='/push/<%= phone %>/KeyPad4' id='btn-4'>4</a>
+<a target='void' href='/push/<%= phone %>/KeyPad5' id='btn-5'>5</a>
+<a target='void' href='/push/<%= phone %>/KeyPad6' id='btn-6'>6</a>
+<a target='void' href='/push/<%= phone %>/KeyPad7' id='btn-7'>7</a>
+<a target='void' href='/push/<%= phone %>/KeyPad8' id='btn-8'>8</a>
+<a target='void' href='/push/<%= phone %>/KeyPad9' id='btn-9'>9</a>
+<a target='void' href='/push/<%= phone %>/KeyPadStar'  id='btn-star' >*</a>
+<a target='void' href='/push/<%= phone %>/KeyPadPound' id='btn-pound'>#</a>
+
+<a target='void' href='/push/<%= phone %>/Soft1' id='btn-soft1'>---</a>
+<a target='void' href='/push/<%= phone %>/Soft2' id='btn-soft2'>---</a>
+<a target='void' href='/push/<%= phone %>/Soft3' id='btn-soft3'>---</a>
+<a target='void' href='/push/<%= phone %>/Soft4' id='btn-soft4'>---</a>
+<a target='void' href='/push/<%= phone %>/Soft5' id='btn-soft5'>---</a>
+
+<a target='void' href='/push/<%= phone %>/NavBack'   id='btn-navback'  >↶</a>
+<a target='void' href='/push/<%= phone %>/NavDwn'    id='btn-navdwn'   >↓</a>
+<a target='void' href='/push/<%= phone %>/NavLeft'   id='btn-navleft'  >←</a>
+<a target='void' href='/push/<%= phone %>/NavRight'  id='btn-navright' >→</a>
+<a target='void' href='/push/<%= phone %>/NavSelect' id='btn-navselect'>OK</a>
+<a target='void' href='/push/<%= phone %>/NavUp'     id='btn-navup'    >↑</a>
+
+
+<!--
+
+TODO: Implement (and decide a position and text/symbol) for the rest of the possible keys:
+
+Key:Applications
+Key:AppMenu
+Key:Contacts
+Key:Directories
+Key:Feature1 to Key:Feature120
+Key:FixedFeature1 to 3
+Key:Headset
+Key:Hold
+Key:Info
+Key:Line1 to Key:Line120
+Key:Messages
+Key:Mute
+Key:Offhook
+Key:Onhook
+Key:PTT
+Key:Release
+Key:Services
+Key:Session1 to Key:Session6
+Key:Settings
+Key:Speaker
+Key:VolDwn
+Key:VolUp
+
+-->
+
+</div>
+
+
+<!-- 
+TODO: Replace the old-timey method of using an invisible iframe with some 
+javascript magic, and make fancy things like visual feedback of keys being pushed
+and error detection if a key push was unsuccesful.
+-->
+<iframe name='void' style='display:none'></iframe>
+
+<script>
+
+// Use the old trick of appending a hash plus a timestamp to force refreshing the image.
+/// TODO: Use a better way of refreshing the image, e.g. hooking up event 
+///   handlers to the image itself - the image should be reloaded after the
+///   previous one was completed, not every one sec (what if an image
+///   takes more than one sec to be rendered on the phone's memory??
+window.setInterval(function(){
+	document.getElementById('phoneScreen').src = 
+	'<%= imageUrl %>#' + Date.now();
+},1000)
+
+</script>
+</html>

@@ -1,0 +1,145 @@
+
+
+#phoneScreen {
+/*	This is a very big assumption -every phone model has a different
+	screen resolution. This should be overwritten by model-specific stylesheets.*/
+	width: 320px;
+	height: 200px;
+
+	position:absolute;
+	left:48px;
+	top:24px;
+	
+}
+
+#keyboard {
+	position:absolute;
+	left:48px;
+	top:224px;
+}
+
+
+/* All keys should look more or less like a button */
+#keyboard a {
+	background-color: #404040;
+	color: white;
+	border: 4px solid #202020;
+	position:absolute;
+	left:-30px; /* MUST be set on a per-key basis!!! */
+	display:block;
+	height:24px;
+	width:24px;
+	font-size:24px;
+	text-decoration:none;
+	font-family:'Sans';
+	text-align:center;
+}
+
+
+#keyboard a#btn-soft1 {
+	left:0px;
+	top: 0px;
+	width:54px;
+}
+#keyboard a#btn-soft2 {
+	left:60px;
+	top: 0px;
+	width:54px;
+}
+#keyboard a#btn-soft3 {
+	left:120px;
+	top: 0px;
+	width:54px;
+}
+#keyboard a#btn-soft4 {
+	left:180px;
+	top: 0px;
+	width:54px;
+}
+#keyboard a#btn-soft5 {
+	left:240px;
+	top: 0px;
+	width:54px;
+}
+
+#keyboard a#btn-1 {
+	left:0px;
+	top: 60px;
+}
+#keyboard a#btn-2 {
+	left:30px;
+	top: 60px;
+}
+#keyboard a#btn-3 {
+	left:60px;
+	top: 60px;
+}
+#keyboard a#btn-4 {
+	left:0px;
+	top: 90px;
+}
+#keyboard a#btn-5 {
+	left:30px;
+	top: 90px;
+}
+#keyboard a#btn-6 {
+	left:60px;
+	top: 90px;
+}
+#keyboard a#btn-7 {
+	left:0px;
+	top: 120px;
+}
+#keyboard a#btn-8 {
+	left:30px;
+	top: 120px;
+}
+#keyboard a#btn-9 {
+	left:60px;
+	top: 120px;
+}
+#keyboard a#btn-star {
+	left:0px;
+	top: 150px;
+}
+#keyboard a#btn-0 {
+	left:30px;
+	top: 150px;
+}
+#keyboard a#btn-pound {
+	left:60px;
+	top: 150px;
+}
+
+
+#keyboard a#btn-navback {
+	left:120px;
+	top:60px;
+}
+#keyboard a#btn-navdwn {
+	left:150px;
+	top:120px;
+}
+#keyboard a#btn-navleft {
+	left:120px;
+	top:90px;
+}
+#keyboard a#btn-navright {
+	left:180px;
+	top:90px;
+}
+#keyboard a#btn-navselect {
+	left:150px;
+	top:90px;
+	font-size:75%;
+}
+#keyboard a#btn-navup {
+	left:150px;
+	top:60px;
+}
+
+
+
+
+
+
