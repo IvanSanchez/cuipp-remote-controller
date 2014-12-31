@@ -4,7 +4,7 @@
 /*	This is a very big assumption -every phone model has a different
 	screen resolution. This should be overwritten by model-specific stylesheets.*/
 	width: 320px;
-	height: 200px;
+	height: 240px;
 
 	position:absolute;
 	left:48px;
@@ -15,131 +15,103 @@
 #keyboard {
 	position:absolute;
 	left:48px;
-	top:224px;
+	top:264px;
 }
 
 
 /* All keys should look more or less like a button */
-#keyboard a {
-	background-color: #404040;
+#keyboard button {
+/*	background-color: #404040;
 	color: white;
-	border: 4px solid #202020;
+	border: 4px solid #202020;*/
 	position:absolute;
 	left:-30px; /* MUST be set on a per-key basis!!! */
 	display:block;
-	height:24px;
-	width:24px;
-	font-size:24px;
-	text-decoration:none;
-	font-family:'Sans';
-	text-align:center;
+	height:28px;
+	width:28px;
+	font-size: 24px;
+	line-height: 0px;
+	text-decoration: none;
+	font-family: "Sans";
+	text-align: center;
+	border: 2px solid rgba(185, 185, 185, 1);
+	outline:0;
 }
 
-
-#keyboard a#btn-soft1 {
-	left:0px;
-	top: 0px;
-	width:54px;
-}
-#keyboard a#btn-soft2 {
-	left:60px;
-	top: 0px;
-	width:54px;
-}
-#keyboard a#btn-soft3 {
-	left:120px;
-	top: 0px;
-	width:54px;
-}
-#keyboard a#btn-soft4 {
-	left:180px;
-	top: 0px;
-	width:54px;
-}
-#keyboard a#btn-soft5 {
-	left:240px;
-	top: 0px;
-	width:54px;
-}
-
-#keyboard a#btn-1 {
-	left:0px;
-	top: 60px;
-}
-#keyboard a#btn-2 {
-	left:30px;
-	top: 60px;
-}
-#keyboard a#btn-3 {
-	left:60px;
-	top: 60px;
-}
-#keyboard a#btn-4 {
-	left:0px;
-	top: 90px;
-}
-#keyboard a#btn-5 {
-	left:30px;
-	top: 90px;
-}
-#keyboard a#btn-6 {
-	left:60px;
-	top: 90px;
-}
-#keyboard a#btn-7 {
-	left:0px;
-	top: 120px;
-}
-#keyboard a#btn-8 {
-	left:30px;
-	top: 120px;
-}
-#keyboard a#btn-9 {
-	left:60px;
-	top: 120px;
-}
-#keyboard a#btn-star {
-	left:0px;
-	top: 150px;
-}
-#keyboard a#btn-0 {
-	left:30px;
-	top: 150px;
-}
-#keyboard a#btn-pound {
-	left:60px;
-	top: 150px;
-}
-
-
-#keyboard a#btn-navback {
-	left:120px;
-	top:60px;
-}
-#keyboard a#btn-navdwn {
-	left:150px;
-	top:120px;
-}
-#keyboard a#btn-navleft {
-	left:120px;
-	top:90px;
-}
-#keyboard a#btn-navright {
-	left:180px;
-	top:90px;
-}
-#keyboard a#btn-navselect {
-	left:150px;
-	top:90px;
+#keyboard .glyphicon {
+	line-height:0;
 	font-size:75%;
 }
-#keyboard a#btn-navup {
-	left:150px;
-	top:60px;
+
+#keyboard button#btn-Soft1,
+#keyboard button#btn-Soft2,
+#keyboard button#btn-Soft3,
+#keyboard button#btn-Soft4,
+#keyboard button#btn-Soft5 {
+	top: 4px;
+	width:62px;
+	height:16px;
+	line-height:0px;
 }
 
+#keyboard button#btn-Soft1 { left:1px; }
+#keyboard button#btn-Soft2 { left:65px; }
+#keyboard button#btn-Soft3 { left:129px; }
+#keyboard button#btn-Soft4 { left:193px; }
+#keyboard button#btn-Soft5 { left:257px; }
 
+#keyboard button#btn-KeyPad1     { left:0px; top: 60px; }
+#keyboard button#btn-KeyPad2     { left:30px; top: 60px; }
+#keyboard button#btn-KeyPad3     { left:60px; top: 60px; }
+#keyboard button#btn-KeyPad4     { left:0px; top: 90px; }
+#keyboard button#btn-KeyPad5     { left:30px; top: 90px; }
+#keyboard button#btn-KeyPad6     { left:60px; top: 90px; }
+#keyboard button#btn-KeyPad7     { left:0px; top: 120px; }
+#keyboard button#btn-KeyPad8     { left:30px; top: 120px; }
+#keyboard button#btn-KeyPad9     { left:60px; top: 120px; }
+#keyboard button#btn-KeyPadStar  { left:0px; top: 150px; } 
+#keyboard button#btn-KeyPad0     { left:30px; top: 150px; }
+#keyboard button#btn-KeyPadPound { left:60px; top: 150px; }
 
+#keyboard button#btn-NavBack   { left:120px; top:60px; }
+#keyboard button#btn-NavDwn    { left:150px; top:120px; }
+#keyboard button#btn-NavLeft   { left:120px; top:90px; }
+#keyboard button#btn-NavRight  { left:180px; top:90px; }
+#keyboard button#btn-NavSelect { left:150px; top:90px; font-size:75%; }
+#keyboard button#btn-NavUp     { left:150px; top:60px; }
+
+#keyboard button#btn-Offhook      {left:  0px;top:210px; color:#008000; width:43px;}
+#keyboard button#btn-Onhook       {left: 45px;top:210px; color:#800000; width:43px;}
+
+#keyboard button#btn-Applications {left:240px;top: 60px;}
+#keyboard button#btn-AppMenu      {left:240px;top: 90px;}
+#keyboard button#btn-Services     {left:240px;top:120px; font-size:50%;}
+#keyboard button#btn-Settings     {left:240px;top:150px;}
+#keyboard button#btn-PTT          {left:240px;top:180px; font-size:50%;}
+#keyboard button#btn-Release      {left:240px;top:210px; font-size:50%;}
+
+#keyboard button#btn-Contacts     {left:270px;top: 60px;}
+#keyboard button#btn-Directories  {left:270px;top: 90px;}
+#keyboard button#btn-Hold         {left:270px;top:120px;}
+#keyboard button#btn-Info         {left:270px;top:150px;}
+#keyboard button#btn-Messages     {left:270px;top:180px;}
+                                                  
+#keyboard button#btn-Headset      {left:300px;top: 60px;}
+#keyboard button#btn-Speaker      {left:300px;top: 90px;}
+#keyboard button#btn-Mute         {left:300px;top:120px;}
+#keyboard button#btn-VolDwn       {left:300px;top:150px;}
+#keyboard button#btn-VolUp        {left:300px;top:180px;}
+                                                  
+
+/* The "OnHook" icon must show a handset facing down, so
+   let's apply some CSS3 transforms */
+#keyboard button#btn-Onhook .glyphicon {
+	transform:         rotate(135deg);
+	-moz-transform:    rotate(135deg);
+	-o-transform:      rotate(135deg);
+	-ms-transform:     rotate(135deg);
+	-webkit-transform: rotate(135deg);
+}
 
 
 

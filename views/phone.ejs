@@ -1,69 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head><title><%= phone %> - cuipp-remote-controller</title>
 
 <link rel='stylesheet' href='/css/keyboard.css' />
+<link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
 <body>
 
 
 <img id='phoneScreen' src='<%= imageUrl %>'>
 
 <div id='keyboard'>
-
-<a target='void' href='/push/<%= phone %>/KeyPad0' id='btn-0'>0</a>
-<a target='void' href='/push/<%= phone %>/KeyPad1' id='btn-1'>1</a>
-<a target='void' href='/push/<%= phone %>/KeyPad2' id='btn-2'>2</a>
-<a target='void' href='/push/<%= phone %>/KeyPad3' id='btn-3'>3</a>
-<a target='void' href='/push/<%= phone %>/KeyPad4' id='btn-4'>4</a>
-<a target='void' href='/push/<%= phone %>/KeyPad5' id='btn-5'>5</a>
-<a target='void' href='/push/<%= phone %>/KeyPad6' id='btn-6'>6</a>
-<a target='void' href='/push/<%= phone %>/KeyPad7' id='btn-7'>7</a>
-<a target='void' href='/push/<%= phone %>/KeyPad8' id='btn-8'>8</a>
-<a target='void' href='/push/<%= phone %>/KeyPad9' id='btn-9'>9</a>
-<a target='void' href='/push/<%= phone %>/KeyPadStar'  id='btn-star' >*</a>
-<a target='void' href='/push/<%= phone %>/KeyPadPound' id='btn-pound'>#</a>
-
-<a target='void' href='/push/<%= phone %>/Soft1' id='btn-soft1'>---</a>
-<a target='void' href='/push/<%= phone %>/Soft2' id='btn-soft2'>---</a>
-<a target='void' href='/push/<%= phone %>/Soft3' id='btn-soft3'>---</a>
-<a target='void' href='/push/<%= phone %>/Soft4' id='btn-soft4'>---</a>
-<a target='void' href='/push/<%= phone %>/Soft5' id='btn-soft5'>---</a>
-
-<a target='void' href='/push/<%= phone %>/NavBack'   id='btn-navback'  >↶</a>
-<a target='void' href='/push/<%= phone %>/NavDwn'    id='btn-navdwn'   >↓</a>
-<a target='void' href='/push/<%= phone %>/NavLeft'   id='btn-navleft'  >←</a>
-<a target='void' href='/push/<%= phone %>/NavRight'  id='btn-navright' >→</a>
-<a target='void' href='/push/<%= phone %>/NavSelect' id='btn-navselect'>OK</a>
-<a target='void' href='/push/<%= phone %>/NavUp'     id='btn-navup'    >↑</a>
-
-
-<!--
-
-TODO: Implement (and decide a position and text/symbol) for the rest of the possible keys:
-
-Key:Applications
-Key:AppMenu
-Key:Contacts
-Key:Directories
-Key:Feature1 to Key:Feature120
-Key:FixedFeature1 to 3
-Key:Headset
-Key:Hold
-Key:Info
-Key:Line1 to Key:Line120
-Key:Messages
-Key:Mute
-Key:Offhook
-Key:Onhook
-Key:PTT
-Key:Release
-Key:Services
-Key:Session1 to Key:Session6
-Key:Settings
-Key:Speaker
-Key:VolDwn
-Key:VolUp
-
--->
 
 </div>
 
@@ -73,19 +19,110 @@ TODO: Replace the old-timey method of using an invisible iframe with some
 javascript magic, and make fancy things like visual feedback of keys being pushed
 and error detection if a key push was unsuccesful.
 -->
-<iframe name='void' style='display:none'></iframe>
+<iframe name='void' id='void' style='display:none'></iframe>
 
 <script>
 
+// Dinamically add all buttons here, just for making the code a bit more readable and less copy-pasty.
+// Keys are internal names, values are visible text
+var buttons = {
+	'KeyPad0'    :'0',
+	'KeyPad1'    :'1',
+	'KeyPad2'    :'2',
+	'KeyPad3'    :'3',
+	'KeyPad4'    :'4',
+	'KeyPad5'    :'5',
+	'KeyPad6'    :'6',
+	'KeyPad7'    :'7',
+	'KeyPad8'    :'8',
+	'KeyPad9'    :'9',
+	'KeyPadPound':'#',
+	'KeyPadStar' :'*',
+	'Soft1'   :'',
+	'Soft2'   :'',
+	'Soft3'   :'',
+	'Soft4'   :'',
+	'Soft5'   :'',
+	'NavBack'  :'↶',
+	'NavDwn'   :'↓',
+	'NavLeft'  :'←',
+	'NavRight' :'→',
+	'NavSelect':'OK',
+	'NavUp'    :'↑',
+	
+	'Offhook'     :'<span class="glyphicon glyphicon-earphone"   aria-hidden="true"></span>',
+	'Onhook'      :'<span class="glyphicon glyphicon-earphone"   aria-hidden="true"></span>',
+
+	'Applications':'<span class="glyphicon glyphicon-th"         aria-hidden="true"></span>',
+	'AppMenu'     :'<span class="glyphicon glyphicon-th-list"    aria-hidden="true"></span>',
+	'Services'    :'SRV',
+	'Settings'    :'<span class="glyphicon glyphicon-wrench"     aria-hidden="true"></span>',
+	'PTT'         :'PTT',
+	'Release'     :'REL',
+
+	'Info'        :'<span class="glyphicon glyphicon-info-sign"  aria-hidden="true"></span>',
+	'Hold'        :'<span class="glyphicon glyphicon-pause"      aria-hidden="true"></span>',
+	'Contacts'    :'<span class="glyphicon glyphicon-user"       aria-hidden="true"></span>',
+	'Directories' :'<span class="glyphicon glyphicon-book"       aria-hidden="true"></span>',
+	'Messages'    :'<span class="glyphicon glyphicon-envelope"   aria-hidden="true"></span>',
+
+	'Headset'     :'<span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>',
+	'Speaker'     :'<span class="glyphicon glyphicon-bullhorn"    aria-hidden="true"></span>',
+	'Mute'        :'<span class="glyphicon glyphicon-volume-off"  aria-hidden="true"></span>',
+	'VolDwn'      :'<span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span>',
+	'VolUp'       :'<span class="glyphicon glyphicon-volume-up"   aria-hidden="true"></span>',
+
+}
+
+
+
+// TODO: Implement (and decide a position and text/symbol) for the rest of the possible keys:
+// 
+// Key:Feature1 to Key:Feature120
+// Key:FixedFeature1 to 3
+// Key:Line1 to Key:Line120
+// Key:Session1 to Key:Session6
+
+
+
+for (i in buttons) {
+
+	// Let's create something like this without jQuery:
+	//<button class='btn' target='void' href='/push/<%= phone %>/KeyPad0' id='btn-0'>0</button>
+
+	var button = document.createElement('button');
+	button.className = 'btn';
+	button.id = 'btn-' + i;
+	button.innerHTML = buttons[i];
+	button.onclick = (function(key){return function(ev) {
+		document.getElementById('void').src = '/push/<%= phone %>/' + key;
+	}})(i);
+	
+	document.getElementById('keyboard').appendChild(button);
+
+}
+
+
+
 // Use the old trick of appending a hash plus a timestamp to force refreshing the image.
-/// TODO: Use a better way of refreshing the image, e.g. hooking up event 
-///   handlers to the image itself - the image should be reloaded after the
-///   previous one was completed, not every one sec (what if an image
-///   takes more than one sec to be rendered on the phone's memory??
-window.setInterval(function(){
-	document.getElementById('phoneScreen').src = 
-	'<%= imageUrl %>#' + Date.now();
-},1000)
+
+var errorDelay = 1000;
+
+function refreshImage(){
+	document.getElementById('phoneScreen').src = '<%= imageUrl %>#' + Date.now();
+}
+
+document.getElementById('phoneScreen').onerror = function(ev) {
+	window.setTimeout(refreshImage, errorDelay);
+	errorDelay *= 2;
+}
+
+document.getElementById('phoneScreen').onload= function(ev) {
+	window.setTimeout(refreshImage, 5000);
+	errorDelay = 1000;
+}
+
+
 
 </script>
 </html>

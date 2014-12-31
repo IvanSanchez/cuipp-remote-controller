@@ -8,4 +8,9 @@ cuipp-remote-controller
 This is unfinished right now; the goal of the project is to have a web application capable of keeping track of IP phones, adding, probing capabilities and displaying a different web interface based on the phone's model number (via a bit of clever CSS).
 
 
+Legalese
+------------
+
+*cuipp-remote-controller* includes Bootstrap 3.3.1, which is available under a MIT license. Otherwise, check the *LICENSE* file.
+
 

@@ -37,7 +37,10 @@ app.get('/phone/:phone',function(req,res) {
 	var templateVariables = {};
 	
 	templateVariables.phone = req.params.phone;
-	templateVariables.imageUrl = "http://" + defaultPhoneUsername + ':' + defaultPhonePasswd + '@' + req.params.phone + ':' + defaultPhonePort + "/CGI/Screenshot"
+	templateVariables.imageUrl = "http://" + defaultPhoneUsername + ':' + defaultPhonePasswd + '@' + req.params.phone + ':' + defaultPhonePort + "/CGI/Screenshot";
+	
+// 	templateVariables.imageUrl = '/img/example_phone_screenshot.jpg';	//// FIXME: Use only during debug.
+	
 	
 	res.render('phone', templateVariables);
 	
@@ -57,7 +60,7 @@ app.get('/push/:phone/:key', function (req, res) {
 		// Send back to the web browser the response fromthe phone, even
 		//   if the browser won't care about it right now.
 		if (err) {
-			res.status(502).send(err.toString());
+			res.status(500).send(err.toString());
 		} else {
 			res.status(200).send(res2);
 		}
