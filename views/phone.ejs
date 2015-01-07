@@ -56,7 +56,7 @@ var buttons = {
 	'Applications':'<span class="glyphicon glyphicon-th"         aria-hidden="true"></span>',
 	'AppMenu'     :'<span class="glyphicon glyphicon-th-list"    aria-hidden="true"></span>',
 	'Services'    :'SRV',
-	'Settings'    :'<span class="glyphicon glyphicon-wrench"     aria-hidden="true"></span>',
+	'Settings'    :'<span class="glyphicon glyphicon-cog"     aria-hidden="true"></span>',
 	'PTT'         :'PTT',
 	'Release'     :'REL',
 
@@ -118,7 +118,7 @@ document.getElementById('phoneScreen').onerror = function(ev) {
 }
 
 document.getElementById('phoneScreen').onload= function(ev) {
-	window.setTimeout(refreshImage, 5000);
+	window.setTimeout(refreshImage, 2000);
 	errorDelay = 1000;
 }
 

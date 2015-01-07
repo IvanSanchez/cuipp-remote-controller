@@ -1,0 +1,23 @@
+{
+    "name": "cuipp-remote-controller"
+  , "main": "app.js"
+  , "version": "0.0.1"
+  , "dependencies": {
+      "express": "4.x"
+    , "ejs": ">= 0.0.1"
+    , "cuipp": "latest"
+    , "config": "latest"
+    , "ssh2": "latest"
+    , "js-yaml": ">=3.0.0"
+    , "async": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ivansanchez/cuipp-remote-controller.git"
+  },
+  "author": {
+    "name": "Iván Sánchez Ortega",
+    "email": "ivan@sanchezortega.es"
+  },
+  "license": "Beerware"
+}

@@ -26,3 +26,8 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+
+soap/AXLAPI.wsdl
+soap/AXLSoap.xsd
+

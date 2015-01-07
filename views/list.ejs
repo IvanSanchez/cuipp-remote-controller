@@ -2,13 +2,58 @@
 <html lang="en">
 <head>
 <title>cuipp-remote-controller</title>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+  
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.js"></script>
+
+
+<link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
 <body>
 
 
-<a href='/phone/12.34.56.78'>12.34.56.78</a>
+<a href='/updatePhonesFromRisDb'>Update phones from Ris DB</a>
+<a href='/updateNetworkStatus'>Update network status</a>
 
 
+<table id='phonesTable'>
+<thead>
+<th>SEP</th>
+<th>Descr</th>
+<th>IPv4</th>
+<th>DeviceModel</th>
+<th>ModelNumber</th>
+<th>Reg Status</th>
+<th>Network Status</th>
+<th>Remote control</th>
+</thead>
+<tbody>
+</tbody>
+</table>
 
+<script>
 
+// Current phones: <%= phones %>
+
+$('#phonesTable').DataTable( {
+    data: <%- phones %>,
+	columns: [
+		null,
+		{ "width": "30%" },
+		null,
+		null,
+		null,
+		null,
+		null,
+		null
+	]
+} );
+
+</script>
 
 </html>
